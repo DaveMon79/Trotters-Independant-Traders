@@ -1,28 +1,99 @@
+// Imports express and models 
 const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
-router.get('/', (req, res) => {
-  // find all categories
-  // be sure to include its associated Products
+// Returns all categories information, including product information 
+router.get('/', async (req, res) => {
+
+  try {
+    const categoryData = await Category.findAll({
+      include: [{ model: Product }],
+    });
+    res.status(200).json(categoryData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
+// Returns  category information by ID, including product information 
+router.get('/:id', async (req, res) => {
+
+  try {
+    const categoryData = await Category.findByPk(req.params.id, {
+      include: [{ model: Product }],
+    });
+
+    if (!categoryData) {
+      res.status(404).json({ message: 'No category information found with that ID!' });
+      return;
+    }
+    res.status(200).json(categoryData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.get('/:id', (req, res) => {
-  // find one category by its `id` value
-  // be sure to include its associated Products
+// Adds a new category to the databae
+router.post('/', async (req, res) => {
+
+  try {
+    const categoryData = await Category.create(req.body);
+    res.status(200).json(categoryData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
-router.post('/', (req, res) => {
-  // create a new category
+
+// Updates an exsisting category in the database by ID
+router.put('/:id', async (req, res) => {
+
+  try {
+    const categoryData = await Category.update(req.body,
+      {
+        where: {
+          id: req.params.id,
+        },
+      })
+
+    if (!categoryData) {
+      res.status(404).json({ message: 'No category information found with that ID!' });
+      return;
+    }
+    res.status(200).json(categoryData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+
 });
 
-router.put('/:id', (req, res) => {
-  // update a category by its `id` value
+
+// Deletes a category in the database by ID
+router.delete('/:id', async (req, res) => {
+
+  try {
+    const categoryData = await Category.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+
+    if (!categoryData) {
+      res.status(404).json({ message: 'No category information found with that ID!' });
+      return;
+    }
+    res.status(200).json(categoryData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.delete('/:id', (req, res) => {
-  // delete a category by its `id` value
-});
 
 module.exports = router;
+
+// {
+//   "category_name": "Beer"
+// }
+
