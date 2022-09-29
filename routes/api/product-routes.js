@@ -1,10 +1,20 @@
+// Imports express and models 
 const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // endpoint - /api/products 
 
+// Test object for post and put requests
+// {
+//   "product_name": "Basketball",
+//   "price": 200.00,
+//   "stock": 3,
+//   "category_id": 1,
+//   "tagIds": [1, 2, 3, 4]
+// }
 
-// Returns all products with categorys and id's
+
+// Returns all products with categories and id's
 router.get('/', async (req, res) => {
 
   try {
@@ -20,7 +30,7 @@ router.get('/', async (req, res) => {
 });
 
 
-// Returns the product by ID with category and tags
+// Returns the product by ID with categories and tags
 router.get('/:id', async (req, res) => {
 
   try {
@@ -133,10 +143,3 @@ router.delete('/:id', async (req, res) => {
 
 module.exports = router;
 
-// {
-//   "product_name": "Basketball",
-//   "price": 200.00,
-//   "stock": 3,
-//   "category_id": 1,
-//   "tagIds": [1, 2, 3, 4]
-// }

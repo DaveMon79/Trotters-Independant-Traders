@@ -4,6 +4,11 @@ const { Category, Product } = require('../../models');
 
 // endpoint - /api/categories 
 
+// Test object for post and put requests
+// {
+//   "category_name": "Beer"
+// }
+
 // Returns all categories information, including product information 
 router.get('/', async (req, res) => {
 
@@ -93,7 +98,4 @@ router.delete('/:id', async (req, res) => {
 
 module.exports = router;
 
-// {
-//   "category_name": "Beer"
-// }
 

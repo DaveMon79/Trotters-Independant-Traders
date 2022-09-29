@@ -1,7 +1,13 @@
+// Imports express and models 
 const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
 // endpoint -  /api/tags
+
+// Test object for post and put requests
+// {
+//   "tag_name": "Beer"
+// }
 
 // Returns all Tags with linked products
 router.get('/', async (req, res) => {
@@ -95,6 +101,4 @@ router.delete('/:id', async (req, res) => {
 
 module.exports = router;
 
-// {
-//   "tag_name": "Beer"
-// }
+

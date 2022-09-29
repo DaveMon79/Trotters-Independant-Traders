@@ -1,7 +1,8 @@
+// Sequalize connections 
 const { Model, DataTypes } = require('sequelize');
-
 const sequelize = require('../config/connection');
 
+// Product Model 
 class ProductTag extends Model {}
 
 ProductTag.init(
