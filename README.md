@@ -52,6 +52,7 @@ This weeks asssignments is to build the back end for an e-commerce site. You’l
 ![Technologies](https://img.shields.io/badge/-Sequelize-52B0E7?logo=Sequelize&logoColor=white)
 ![Technologies](https://img.shields.io/badge/-.ENV-ECD53F?logo=.ENV&logoColor=white)
 ![Technologies](https://img.shields.io/badge/-Insomnia-4000BF?logo=Insomnia&logoColor=white)
+![Technologies](https://img.shields.io/badge/-Express-000000?logo=Express&logoColor=white)
 
 # Installation
 
@@ -59,7 +60,7 @@ In Terminal type "npm i". This will install all the pre added dependancies you'l
   
 # Usage
   
-To use this appilcation type "npm run seed" in to terminal. This will create the database and seed the tables ready for use, then type "npm start" to activate the application. 
+To use this appilcation type "npm run seed" in to terminal. This will create the database and seed the tables ready for use, then type "npm start" to activate the application. Then using Insomnia you can place the relevant front-end get, put, post and delete requests. 
 
 # License
 
